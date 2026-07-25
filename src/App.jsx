@@ -6,7 +6,7 @@ export default function App() {
 
   return (
     <div>
-      <h1>Grocery Budget</h1>
+      <h1 className="text-3xl font-bold text-green-700">Grocery Budget</h1>
       <input
         type="number"
         value={budget}

@@ -5,6 +5,9 @@ import {DEFAULT_STAPLES} from './data/defaultStaples.js';
 export default function App() {
   const [budget, setBudget] = useState('');
   const [staples, setStaples] = useState(DEFAULT_STAPLES);
+  const [extras, setExtras] = useState([]);
+  const [extraName, setExtraName] = useState('');
+  const [extraPrice, setExtraPrice] = useState('');
 
   function toggleStaple(id) {
     setStaples(
@@ -12,6 +15,22 @@ export default function App() {
         item.id === id ? { ...item, checked: !item.checked } : item
       )
     );
+  }
+
+  function addExtra() {
+    const price = parseFloat(extraPrice);
+
+    if(!extraName.trim() || isNaN(price))  return;
+
+  const newItem = {
+    id: Date.now(),
+    name: extraName.trim(),
+    price,
+  }
+
+    setExtras([...extras, newItem]);
+    setExtraName('');
+    setExtraPrice('');
   }
 
   const spent = staples
@@ -51,6 +70,39 @@ export default function App() {
           </li>
         ))}
       </ul>
+
+      <div className="mt-6">
+        <h2 className="text-xl font-bold mb-2">Extras</h2>
+        <div className="flex gap-2 mb-3">
+          <input
+            value={extraName}
+            onChange={(e) => setExtraName(e.target.value)}
+            placeholder="Item name"
+            className="border rounded px-3 py-2"
+          />
+          <input
+            type="number"
+            value={extraPrice}
+            onChange={(e) => setExtraPrice(e.target.value)}
+            placeholder="Price"
+            className="border rounded px-3 py-2"
+          />
+          <button
+            onClick={addExtra}
+            className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
+          >
+            Add
+          </button>
+        </div>
+
+        <ul>
+          {extras.map((item) => (
+            <li key={item.id}>
+              {item.name} - R {item.price}
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
     
   )

@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import BudgetDisplay from './components/BudgetDisplay.jsx';
 import {DEFAULT_STAPLES} from './data/defaultStaples.js';
 
@@ -8,6 +8,19 @@ export default function App() {
   const [extras, setExtras] = useState([]);
   const [extraName, setExtraName] = useState('');
   const [extraPrice, setExtraPrice] = useState('');
+
+
+  useEffect(() => {
+    localStorage.setItem('grocery-budget', budget);
+  }, [budget]);
+
+  useEffect(() => {
+    localStorage.setItem('grocery-staples', JSON.stringify(staples));
+  }, [staples]);
+
+  useEffect(() => {
+    localStorage.setItem('grocery-extras', JSON.stringify(extras));
+  }, [extras]);
 
   function toggleStaple(id) {
     setStaples(

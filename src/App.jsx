@@ -3,9 +3,20 @@ import BudgetDisplay from './components/BudgetDisplay.jsx';
 import {DEFAULT_STAPLES} from './data/defaultStaples.js';
 
 export default function App() {
-  const [budget, setBudget] = useState('');
-  const [staples, setStaples] = useState(DEFAULT_STAPLES);
-  const [extras, setExtras] = useState([]);
+  const [budget, setBudget] = useState(() => {
+    const savedBudget = localStorage.getItem('grocery-budget');
+    return savedBudget ? parseFloat(savedBudget) : '';
+  });
+
+  const [staples, setStaples] = useState(() => {
+    const savedStaples = localStorage.getItem('grocery-staples');
+    return savedStaples ? JSON.parse(savedStaples) : DEFAULT_STAPLES;
+  });
+  const [extras, setExtras] = useState(() => {
+    const savedExtras = localStorage.getItem('grocery-extras');
+    return savedExtras ? JSON.parse(savedExtras) : [];
+  });
+  
   const [extraName, setExtraName] = useState('');
   const [extraPrice, setExtraPrice] = useState('');
 

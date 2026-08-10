@@ -39,7 +39,15 @@ export default function App() {
   function toggleStaple(id) {
     setStaples(
       staples.map((item) =>
-        item.id === id ? { ...item, checked: !item.checked } : item
+        item.id === id ? { ...item, checked: false } : item
+      )
+    );
+  }
+
+  function confirmStaplePrice(id, price, defaultPrice) {
+    setStaples(
+      staples.map((item) =>
+        item.id === id ? { ...item, price, checked: true } : item
       )
     );
   }
@@ -76,7 +84,7 @@ export default function App() {
 
       <BudgetDisplay budget={budget} />
 
-      <StaplesSection staples={staples} onToggle={toggleStaple} />
+      <StaplesSection staples={staples} onToggle={toggleStaple} onConfirmPrice={confirmStaplePrice} />
 
       <ExtrasSection extras={extras} onAdd={addExtra} />
     </div>

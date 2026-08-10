@@ -2,6 +2,7 @@ import {useState, useEffect} from 'react';
 import BudgetDisplay from './components/BudgetDisplay.jsx';
 import {DEFAULT_STAPLES} from './data/defaultStaples.js';
 import StapleRow from './components/StapleRow.jsx';
+import StaplesSection from './components/StaplesSection.jsx';
 
 export default function App() {
   const [budget, setBudget] = useState(() => {
@@ -83,11 +84,8 @@ export default function App() {
       </p>
 
       <BudgetDisplay budget={budget} />
-      <ul className="mt-6">
-        {staples.map((item) => (
-          <StapleRow key={item.id} item={item} onToggle={toggleStaple} />
-        ))}
-      </ul>
+
+      <StaplesSection staples={staples} onToggle={toggleStaple} />
 
       <div className="mt-6">
         <h2 className="text-xl font-bold mb-2">Extras</h2>

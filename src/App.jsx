@@ -1,6 +1,7 @@
 import {useState, useEffect} from 'react';
 import BudgetDisplay from './components/BudgetDisplay.jsx';
 import {DEFAULT_STAPLES} from './data/defaultStaples.js';
+import StapleRow from './components/StapleRow.jsx';
 
 export default function App() {
   const [budget, setBudget] = useState(() => {
@@ -16,7 +17,7 @@ export default function App() {
     const savedExtras = localStorage.getItem('grocery-extras');
     return savedExtras ? JSON.parse(savedExtras) : [];
   });
-  
+
   const [extraName, setExtraName] = useState('');
   const [extraPrice, setExtraPrice] = useState('');
 
@@ -82,18 +83,9 @@ export default function App() {
       </p>
 
       <BudgetDisplay budget={budget} />
-      <ul>
+      <ul className="mt-6">
         {staples.map((item) => (
-          <li key={item.id}>
-            <label>
-              <input
-                type="checkbox"
-                checked={item.checked}
-                onChange={() => toggleStaple(item.id)}
-              />
-              {item.name} - R {item.price}
-            </label>
-          </li>
+          <StapleRow key={item.id} item={item} onToggle={toggleStaple} />
         ))}
       </ul>
 

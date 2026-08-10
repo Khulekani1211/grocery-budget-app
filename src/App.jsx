@@ -3,6 +3,7 @@ import BudgetDisplay from './components/BudgetDisplay.jsx';
 import {DEFAULT_STAPLES} from './data/defaultStaples.js';
 import StapleRow from './components/StapleRow.jsx';
 import StaplesSection from './components/StaplesSection.jsx';
+import ExtrasSection from './components/ExtrasSection.jsx';
 
 export default function App() {
   const [budget, setBudget] = useState(() => {
@@ -43,20 +44,10 @@ export default function App() {
     );
   }
 
-  function addExtra() {
-    const price = parseFloat(extraPrice);
+  function addExtra(item) {
 
-    if(!extraName.trim() || isNaN(price))  return;
-
-  const newItem = {
-    id: Date.now(),
-    name: extraName.trim(),
-    price,
-  }
-
-    setExtras([...extras, newItem]);
-    setExtraName('');
-    setExtraPrice('');
+    setExtras([...extras, item]);
+    
   }
 
   const spentOnStaples = staples
@@ -87,38 +78,7 @@ export default function App() {
 
       <StaplesSection staples={staples} onToggle={toggleStaple} />
 
-      <div className="mt-6">
-        <h2 className="text-xl font-bold mb-2">Extras</h2>
-        <div className="flex gap-2 mb-3">
-          <input
-            value={extraName}
-            onChange={(e) => setExtraName(e.target.value)}
-            placeholder="Item name"
-            className="border rounded px-3 py-2"
-          />
-          <input
-            type="number"
-            value={extraPrice}
-            onChange={(e) => setExtraPrice(e.target.value)}
-            placeholder="Price"
-            className="border rounded px-3 py-2"
-          />
-          <button
-            onClick={addExtra}
-            className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
-          >
-            Add
-          </button>
-        </div>
-
-        <ul>
-          {extras.map((item) => (
-            <li key={item.id}>
-              {item.name} - R {item.price}
-            </li>
-          ))}
-        </ul>
-      </div>
+      <ExtrasSection extras={extras} onAdd={addExtra} />
     </div>
     
   )

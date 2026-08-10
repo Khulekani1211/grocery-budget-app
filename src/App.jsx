@@ -39,12 +39,12 @@ export default function App() {
   function toggleStaple(id) {
     setStaples(
       staples.map((item) =>
-        item.id === id ? { ...item, checked: false } : item
+        item.id === id ? { ...item, price: null, checked: false } : item
       )
     );
   }
 
-  function confirmStaplePrice(id, price, defaultPrice) {
+  function confirmStaplePrice(id, price) {
     setStaples(
       staples.map((item) =>
         item.id === id ? { ...item, price, checked: true } : item

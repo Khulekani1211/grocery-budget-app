@@ -1,7 +1,7 @@
 import {useState} from 'react';
 
 export default function StapleRow({ item, isEditing, onRowClick, onConfirm, onCancel }) {
-  const [priceDraft, setPriceDraft] = useState(String(item.price));
+  const [priceDraft, setPriceDraft] = useState(String(item.defaultPrice));
 
   if (isEditing) {
     return (
@@ -39,7 +39,7 @@ export default function StapleRow({ item, isEditing, onRowClick, onConfirm, onCa
                     checked={!!item.checked}
                     onChange={onRowClick}
                 />
-                {item.name} - R {item.checked ? item.price : `¬${item.price}`}
+                {item.name} - R {item.checked ? item.price : `¬${item.defaultPrice}`}
             </label>
         </li>
     );

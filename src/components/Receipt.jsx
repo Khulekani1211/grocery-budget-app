@@ -1,0 +1,41 @@
+export default function Receipt({ staples, extras, spent}) {
+
+    const purchasedStaples = staples
+        .filter(item => item.checked)
+        .map((item) => ({ id: item.id, name: item.name, price: item.price, purchasedAt: item.purchasedAt }));
+
+    const purchasedExtras = extras.map((item) => ({ 
+        id: item.id, 
+        name: item.name, 
+        price: item.price, 
+        purchasedAt: item.purchasedAt 
+    }));
+
+    const receiptItems = [...purchasedStaples, ...purchasedExtras].sort((a, b) => a.purchasedAt - b.purchasedAt);
+
+    return (
+        <div className="mt-6 border-t pt-4">
+            <h2 className="text-xl font-bold mb-2">Receipt</h2>
+            
+            {
+                receiptItems.length === 0 ? (
+                    <p className="text-gray-400 text-sm">Nothing bought yet</p>
+                ) : (
+                    <ul className="mb-2">
+                        {receiptItems.map((item) => (
+                            <li key={item.id} className="flex justify-between text-sm">
+                                <span>{item.name}</span>
+                                <span>R {item.price.toFixed(2)}</span>
+                            </li>
+                        ))}
+                    </ul>
+                )
+            }
+
+            <div className="flex justify-between font-bold border-t pt-2">
+                <span>Total:</span>
+                <span>R {spent.toFixed(2)}</span>
+            </div>
+        </div>
+    )
+}

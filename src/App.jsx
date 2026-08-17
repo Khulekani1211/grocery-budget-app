@@ -2,6 +2,7 @@ import useGroceryState from './hooks/useGroceryState.js';
 import StaplesSection from './components/StaplesSection.jsx';
 import ExtrasSection from './components/ExtrasSection.jsx';
 import BudgetDisplay from './components/BudgetDisplay.jsx';
+import Receipt from './components/Receipt.jsx';
 
 export default function App() {
 
@@ -38,6 +39,8 @@ export default function App() {
       <StaplesSection staples={staples} onToggle={toggleStaple} onConfirmPrice={confirmStaplePrice} />
 
       <ExtrasSection extras={extras} onAdd={addExtra} />
+
+      <Receipt staples={staples} extras={extras} spent={spent} />
     </div>
     
   )

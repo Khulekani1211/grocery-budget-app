@@ -1,11 +1,21 @@
-import {useState, useEffect} from 'react';
-import BudgetDisplay from './components/BudgetDisplay.jsx';
-import {DEFAULT_STAPLES} from './data/defaultStaples.js';
-import StapleRow from './components/StapleRow.jsx';
+import useGroceryState from './hooks/useGroceryState.js';
 import StaplesSection from './components/StaplesSection.jsx';
 import ExtrasSection from './components/ExtrasSection.jsx';
+import BudgetDisplay from './components/BudgetDisplay.jsx';
 
 export default function App() {
+
+  const {
+    budget,
+    setBudget,
+    staples,
+    toggleStaple,
+    confirmStaplePrice,
+    extras,
+    addExtra,
+    remainingBudget,
+    spent
+  } = useGroceryState();
 
   return (
     <div>
@@ -19,11 +29,11 @@ export default function App() {
         className="border rounded px-3 py-2 mb-2"
       />
 
+      <BudgetDisplay budget={budget} spent={spent} remaining={remainingBudget} />
+
       <p className="mb-4 font-semibold">
         Remaining: R {remainingBudget.toFixed(2)}
       </p>
-
-      <BudgetDisplay budget={budget} />
 
       <StaplesSection staples={staples} onToggle={toggleStaple} onConfirmPrice={confirmStaplePrice} />
 

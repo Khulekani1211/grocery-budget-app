@@ -32,7 +32,7 @@ export default function useGroceryState() {
   function toggleStaple(id) {
     setStaples(
       staples.map((item) =>
-        item.id === id ? { ...item, price: null, checked: false } : item
+        item.id === id ? { ...item, price: null, checked: false, purchasedAt: null } : item
       )
     );
   }
@@ -40,14 +40,14 @@ export default function useGroceryState() {
   function confirmStaplePrice(id, price) {
     setStaples(
       staples.map((item) =>
-        item.id === id ? { ...item, price, checked: true } : item
+        item.id === id ? { ...item, price, checked: true, purchasedAt: Date.now() } : item
       )
     );
   }
 
   function addExtra(item) {
 
-    setExtras([...extras, item]);
+    setExtras([...extras, {...item, purchasedAt: Date.now()}]);
     
   }
 

@@ -4,6 +4,7 @@ import ExtrasSection from './components/ExtrasSection.jsx';
 import BudgetDisplay from './components/BudgetDisplay.jsx';
 import Receipt from './components/Receipt.jsx';
 import Money from './components/Money.jsx';
+import { COLORS } from './constants/colors.js';
 
 export default function App() {
 
@@ -20,8 +21,8 @@ export default function App() {
   } = useGroceryState();
 
   return (
-    <div>
-      <h1 style={{fontFamily: '"Space Grotesk", sans-serif'}} className="text-3xl font-bold">Grocery Budget</h1>
+    <div style={{ backgroundColor: COLORS.paper, minHeight: '100vh'}} className="p-6">
+      <h1 style={{fontFamily: '"Space Grotesk", sans-serif', color: COLORS.ink}} className="text-3xl font-bold">Grocery Budget</h1>
 
       <input
         type="number"

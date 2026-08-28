@@ -25,7 +25,7 @@ export default function Receipt({ staples, extras, spent}) {
                         {receiptItems.map((item) => (
                             <li key={item.id} className="flex justify-between text-sm">
                                 <span>{item.name}</span>
-                                <span>R {item.price.toFixed(2)}</span>
+                                <span style={{ fontFamily: '"IBM Plex Mono", monospace' }}>R {item.price.toFixed(2)}</span>
                             </li>
                         ))}
                     </ul>

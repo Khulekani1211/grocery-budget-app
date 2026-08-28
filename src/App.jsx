@@ -3,6 +3,7 @@ import StaplesSection from './components/StaplesSection.jsx';
 import ExtrasSection from './components/ExtrasSection.jsx';
 import BudgetDisplay from './components/BudgetDisplay.jsx';
 import Receipt from './components/Receipt.jsx';
+import Money from './components/Money.jsx';
 
 export default function App() {
 
@@ -33,7 +34,7 @@ export default function App() {
       <BudgetDisplay budget={budget} spent={spent} remaining={remainingBudget} />
 
       <p className="mb-4 font-semibold">
-        Remaining: R {remainingBudget.toFixed(2)}
+        Remaining: <Money value={remainingBudget} />
       </p>
 
       <StaplesSection staples={staples} onToggle={toggleStaple} onConfirmPrice={confirmStaplePrice} />

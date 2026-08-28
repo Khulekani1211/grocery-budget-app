@@ -1,3 +1,5 @@
+import Money from "./Money.jsx";
+
 export default function Receipt({ staples, extras, spent}) {
 
     const purchasedStaples = staples
@@ -25,7 +27,7 @@ export default function Receipt({ staples, extras, spent}) {
                         {receiptItems.map((item) => (
                             <li key={item.id} className="flex justify-between text-sm">
                                 <span>{item.name}</span>
-                                <span style={{ fontFamily: '"IBM Plex Mono", monospace' }}>R {item.price.toFixed(2)}</span>
+                                <span style={{ fontFamily: '"IBM Plex Mono", monospace' }}><Money value={item.price} /></span>
                             </li>
                         ))}
                     </ul>
@@ -34,7 +36,7 @@ export default function Receipt({ staples, extras, spent}) {
 
             <div className="flex justify-between font-bold border-t pt-2">
                 <span>Total:</span>
-                <span>R {spent.toFixed(2)}</span>
+                <span><Money value={spent} /></span>
             </div>
         </div>
     )

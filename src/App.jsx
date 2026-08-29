@@ -20,6 +20,8 @@ export default function App() {
     spent
   } = useGroceryState();
 
+  const overBudget = remainingBudget < 0;
+
   return (
     <div style={{ backgroundColor: COLORS.paper, minHeight: '100vh'}} className="p-6">
       <h1 style={{fontFamily: '"Space Grotesk", sans-serif', color: COLORS.ink}} className="text-3xl font-bold">Grocery Budget</h1>
@@ -34,8 +36,9 @@ export default function App() {
 
       <BudgetDisplay budget={budget} spent={spent} remaining={remainingBudget} />
 
-      <p className="mb-4 font-semibold">
-        Remaining: <Money value={remainingBudget} />
+      <p style={{ color: overBudget ? COLORS.tomato : COLORS.ink }} className="mb-4 font-semibold">
+        {overBudget ? 'Over Budget: ' : 'Remaining: '}
+        <Money value={Math.abs(remainingBudget)} />
       </p>
 
       <StaplesSection staples={staples} onToggle={toggleStaple} onConfirmPrice={confirmStaplePrice} />

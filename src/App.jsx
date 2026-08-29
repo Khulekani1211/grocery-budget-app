@@ -46,6 +46,7 @@ export default function App() {
       <ExtrasSection extras={extras} onAdd={addExtra} />
 
       <Receipt staples={staples} extras={extras} spent={spent} />
+
     </div>
     
   )

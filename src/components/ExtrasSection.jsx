@@ -1,4 +1,5 @@
 import {useState} from 'react';
+import { COLORS } from "../constants/colors.js";
 
 export default function ExtrasSection({ extras, onAdd}){
     const [name, setName] = useState('');
@@ -18,25 +19,28 @@ export default function ExtrasSection({ extras, onAdd}){
     }
 
     return (
-        <div>
-            <h2 className="text-xl font-bold mb-2">Extras</h2>
+        <div className="mb-5">
+            <h2 style={{ fontFamily: '"Space Grotesk", sans-serif' , color: COLORS.ink }} className="text-lg font-bold mb-2">Extras</h2>
             <div className="flex gap-2 mb-3">
                 <input
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    placeholder="Item name"
-                    className="border rounded px-3 py-2"
+                    placeholder="What are you adding?"
+                    style={{ backgroundColor: COLORS.paper, color: COLORS.ink }}
+                    className="flex-1 rounded-lg px-3 py-3 text-sm"
                 />
                 <input
                     type="number"
                     value={price}
                     onChange={(e) => setPrice(e.target.value)}
-                    placeholder="Price"
-                    className="border rounded px-3 py-2"
+                    placeholder="0"
+                    style={{ backgroundColor: COLORS.paper, color: COLORS.ink, fontFamily: '"IBM Plex Mono", monospace' }}
+                    className="w-16 rounded-lg px-2 py-3 text-sm"
                 />
                 <button
                     onClick={handleAdd}
-                    className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
+                    style={{ backgroundColor: COLORS.basil}}
+                    className="px-4 rounded-lg text-white font-semibold shrink-0"
                 >
                     Add
                 </button>

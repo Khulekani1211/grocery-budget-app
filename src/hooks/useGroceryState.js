@@ -51,6 +51,27 @@ export default function useGroceryState() {
     
   }
 
+  function addStaple(name, defaultPrice) {
+    const newStaple = {
+      id: Date.now(),
+      name,
+      defaultPrice,
+      price: null,
+      checked: false,
+      purchasedAt: null
+    };
+    setStaples([...staples, newStaple]);
+  }
+
+  function removeStaple(id) {
+    setStaples(staples.filter((item) => item.id !== id));
+  }
+
+  function newTrip(){
+    setStaples(staples.map((item) => ({ ...item, price: null, checked: false, purchasedAt: null })));
+    setExtras([]);
+  }
+
   const spentOnStaples = staples
     .filter((item) => item.checked)
     .reduce((sum, item) => sum + item.price, 0);
@@ -69,7 +90,11 @@ export default function useGroceryState() {
     remainingBudget,
     toggleStaple,
     confirmStaplePrice,
-    addExtra
+    addExtra,
+    addStaple,
+    removeStaple,
+    setBudget,
+    newTrip
   };
 
 }

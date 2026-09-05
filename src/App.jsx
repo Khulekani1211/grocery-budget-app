@@ -17,7 +17,10 @@ export default function App() {
     extras,
     addExtra,
     remainingBudget,
-    spent
+    spent,
+    addStaple,
+    removeStaple,
+    newTrip
   } = useGroceryState();
 
   const overBudget = remainingBudget < 0;
@@ -46,7 +49,13 @@ export default function App() {
           </div>
           
 
-          <StaplesSection staples={staples} onToggle={toggleStaple} onConfirmPrice={confirmStaplePrice} />
+          <StaplesSection 
+            staples={staples} 
+            onToggle={toggleStaple} 
+            onConfirmPrice={confirmStaplePrice} 
+            onAdd={addStaple}
+            onRemove={removeStaple}
+            />
 
           <ExtrasSection extras={extras} onAdd={addExtra} />
 

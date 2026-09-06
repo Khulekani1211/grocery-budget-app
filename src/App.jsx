@@ -20,7 +20,9 @@ export default function App() {
     spent,
     addStaple,
     removeStaple,
-    newTrip
+    newTrip,
+    confirmReset,
+    setConfirmReset
   } = useGroceryState();
 
   const overBudget = remainingBudget < 0;
@@ -64,8 +66,43 @@ export default function App() {
         </div>
       </div>
       
+      <div className="flex justify-center mt-3 pb-6">
+        {
+          confirmReset ? (
+            <div className="flex items-center gap-2 text-sm">
+              <span style={{ color: COLORS.ink, opacity: 0.7}}>
+                Start a fresh trip?
+              </span>
+              <button
+                onClick={() => {
+                  newTrip();
+                  setConfirmReset(false);
+                }}
+                style={{ backgroundColor: COLORS.tomato, color: COLORS.chalk}}
+                className="px-3 py-2 rounded-lg"
+              >
+                Yes, reset
+              </button>
+              <button
+                onClick={() => setConfirmReset(false)}
+                style={{ backgroundColor: COLORS.grid, color: COLORS.ink}}
+                className="px-3 py-2 rounded-lg"
+              >
+                Cancel
+              </button>
+            </div>
+          ) : (
+            <button
+              onClick={() => setConfirmReset(true)}
+              style={{ color: COLORS.ink, opacity: 0.6}}
+              className="text-sm font-medium px-4 py-2"
+            >
+              New Trip
+            </button>
+          )
+        }
+      </div>
     </div>
-    
     
   )
 }

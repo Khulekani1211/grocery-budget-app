@@ -18,15 +18,17 @@ export default function StapleRow({ item, isEditing, onRowClick, onConfirm, onCa
             />
             <button
                 onClick={() => onConfirm(parseFloat(priceDraft))}
-                className="text-green-700 font-bold"
+                className="text-green-700 font-medium"
+                style={{ backgroundColor: COLORS.basil, color: COLORS.chalk, padding: '0.5rem 0.5rem', borderRadius: '50%' }}
             >
-                ✔
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>
             </button>
             <button
                 onClick={onCancel}
                 className="text-red-700 font-bold"
+                style={{ backgroundColor: COLORS.paper, color: COLORS.chalk, padding: '0.5rem 0.5rem', borderRadius: '50%', opacity: 0.5 }}
             >
-                ✘
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
             </button>
         </li>
 
@@ -41,14 +43,14 @@ export default function StapleRow({ item, isEditing, onRowClick, onConfirm, onCa
                 className="rounded-full flex items-center justify-center mr-2 shrink-0"
                 aria-label={item.checked ? `Mark ${item.name} not purchased` : `Mark ${item.name} as purchased`}
                 style={{
-                    width: 24,
-                    height: 24,
+                    width: 28,
+                    height: 28,
                     backgroundColor: item.checked ? COLORS.basil : 'transparent',
                     border: item.checked ? 'none' : `2px solid ${COLORS.kraft}`,
                     color: item.checked ? 'white' : COLORS.kraft,
                 }}
             >
-                {item.checked && '✓'}
+                {item.checked && <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>}
             </button>
 
             <span

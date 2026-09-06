@@ -74,6 +74,10 @@ export default function useGroceryState() {
     setExtras([]);
   }
 
+  function removeExtra(id) {
+    setExtras(extras.filter((item) => item.id !== id));
+  }
+
   const spentOnStaples = staples
     .filter((item) => item.checked)
     .reduce((sum, item) => sum + item.price, 0);
@@ -98,7 +102,8 @@ export default function useGroceryState() {
     setBudget,
     newTrip,
     confirmReset,
-    setConfirmReset
+    setConfirmReset,
+    removeExtra
   };
 
 }

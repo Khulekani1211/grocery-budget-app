@@ -22,7 +22,8 @@ export default function App() {
     removeStaple,
     newTrip,
     confirmReset,
-    setConfirmReset
+    setConfirmReset,
+    removeExtra
   } = useGroceryState();
 
   const overBudget = remainingBudget < 0;
@@ -59,7 +60,11 @@ export default function App() {
             onRemove={removeStaple}
             />
 
-          <ExtrasSection extras={extras} onAdd={addExtra} />
+          <ExtrasSection 
+            extras={extras} 
+            onAdd={addExtra} 
+            onRemove={removeExtra} 
+          />
 
           <Receipt staples={staples} extras={extras} spent={spent} />
 

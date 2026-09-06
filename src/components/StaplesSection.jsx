@@ -52,14 +52,14 @@ export default function StaplesSection({ staples, onToggle, onConfirmPrice, onAd
 
           {
             showAddForm ? (
-              <div className="flex items-center gap-2 py-3">
+              <div className="flex gap-2 mt-3 mb-2">
                 <input 
                   autoFocus
                   value={newStapleName}
                   onChange={(e) => setNewStapleName(e.target.value)}
                   placeholder="Item name"
                   style={{ backgroundColor: COLORS.paper, color: COLORS.ink }}
-                  className="w-16 rounded-lg px-3 py-2 text-sm"
+                  className="flex-1 rounded-lg px-3 py-2 text-sm"
                 />
                 <input
                   type="number"
@@ -71,22 +71,22 @@ export default function StaplesSection({ staples, onToggle, onConfirmPrice, onAd
                 />
                 <button
                   onClick={hadleStapleAdd}
-                  style={{ backgroundColor: COLORS.basil}}
+                  style={{ backgroundColor: COLORS.basil, color: COLORS.chalk, padding: '0.5rem 0.5rem', borderRadius: '50%' }}
                 >
-                  Add
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="15" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>
                 </button>
                 <button
                   onClick={() => setShowAddForm(false)}
-                  style={{ backgroundColor: COLORS.ink}}
+                  style={{ backgroundColor: COLORS.paper, color: COLORS.chalk, padding: '0.5rem 0.5rem', borderRadius: '50%', opacity: 0.5 }}
                 >
-                  Cancel
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
                 </button>
               </div>
             ) : (
               <button
                 onClick={() => setShowAddForm(true)}
-                style={{ backgroundColor: COLORS.basil}}
-                className="w-full py-3 text-sm font-medium"
+                style={{ color: COLORS.basil}}
+                className="flex-1 py-3 text-sm font-medium"
               >
                 + Add Staple
               </button>

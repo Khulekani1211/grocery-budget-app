@@ -17,6 +17,8 @@ export default function useGroceryState() {
     return savedExtras ? JSON.parse(savedExtras) : [];
   });
 
+    const [confirmReset, setConfirmReset] = useState(false);
+
   useEffect(() => {
     localStorage.setItem('grocery-budget', budget);
   }, [budget]);
@@ -94,7 +96,9 @@ export default function useGroceryState() {
     addStaple,
     removeStaple,
     setBudget,
-    newTrip
+    newTrip,
+    confirmReset,
+    setConfirmReset
   };
 
 }

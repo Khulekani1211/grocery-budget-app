@@ -2,7 +2,7 @@ import {useState} from 'react';
 import {COLORS} from '../constants/colors.js';
 import Money from './Money.jsx';
 
-export default function StapleRow({ item, isEditing, onRowClick, onConfirm, onCancel }) {
+export default function StapleRow({ item, isEditing, onRowClick, onConfirm, onCancel, onRemove }) {
   const [priceDraft, setPriceDraft] = useState(String(item.defaultPrice));
 
   if (isEditing) {
@@ -71,6 +71,16 @@ export default function StapleRow({ item, isEditing, onRowClick, onConfirm, onCa
                     </span>
                 )
             }
+
+            <button
+                onClick={onRemove}
+                aria-label={`Remove ${item.name} from staples`}
+                className="p-1 shrink-0"
+            >
+                <span style={{ color: COLORS.ink, opacity: 0.3 }}>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"></path><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path><line x1="10" x2="10" y1="11" y2="17"></line><line x1="14" x2="14" y1="11" y2="17"></line></svg>
+                </span>
+            </button>
         
         </li>
     );

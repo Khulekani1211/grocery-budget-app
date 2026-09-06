@@ -1,5 +1,6 @@
 import {useState} from 'react';
 import {COLORS} from '../constants/colors.js';
+import Money from './Money.jsx';
 
 export default function StapleRow({ item, isEditing, onRowClick, onConfirm, onCancel }) {
   const [priceDraft, setPriceDraft] = useState(String(item.defaultPrice));
@@ -35,12 +36,6 @@ export default function StapleRow({ item, isEditing, onRowClick, onConfirm, onCa
     return (
         <li className="flex items-center gap-2 py-1">
             
-            {/* <input
-                type="checkbox"
-                checked={!!item.checked}
-                onChange={onRowClick}
-            />
-            {item.name} - R {item.checked ? item.price : `¬${item.defaultPrice}`} */}
             <button
                 onClick={onRowClick}
                 className="rounded-full flex items-center justify-center mr-2 shrink-0"
@@ -55,7 +50,27 @@ export default function StapleRow({ item, isEditing, onRowClick, onConfirm, onCa
             >
                 {item.checked && '✓'}
             </button>
-            {item.name} - R {item.checked ? item.price : `¬${item.defaultPrice}`}
+
+            <span
+                style={{
+                    color: COLORS.ink,
+                    opacity: item.checked ? 0.5 : 1,
+                    textDecoration: item.checked ? 'line-through' : 'none',
+                }}
+                className="flex-1 text-sm"
+            >
+                {item.name}
+            </span>
+
+            {
+                item.checked ? (
+                    <Money value={item.price} />
+                ) : (
+                    <span style={{ color: COLORS.ink, opacity: 0.4, fontFamily: '"IBM Plex Mono", monospace' }} className="text-xs">
+                        ¬R {item.defaultPrice.toFixed(2)}
+                    </span>
+                )
+            }
         
         </li>
     );

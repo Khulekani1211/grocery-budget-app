@@ -67,8 +67,6 @@ export default function ExtrasSection({ extras, onAdd, onRemove }) {
                                 </span>
                             </button>
                         </div>
-
-                        
                         
                     ))}
 

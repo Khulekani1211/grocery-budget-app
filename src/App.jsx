@@ -32,7 +32,7 @@ export default function App() {
     <div style={{ backgroundColor: COLORS.paper, minHeight: '100vh'}}>
       <div className="max-w-md mx-auto px-4 py-6">
         <div style={{ backgroundColor: COLORS.paper, minHeight: '100vh'}} className="p-6">
-          <h1 style={{fontFamily: '"Space Grotesk", sans-serif', color: COLORS.ink}} className="text-3xl font-bold">Grocery Budget</h1>
+          <h1 style={{fontFamily: '"Space Grotesk", sans-serif', color: COLORS.ink}} className="text-3xl font-bold mb-3">Grocery Budget</h1>
 
           <div style={{ backgroundColor: COLORS.chalk }} className="rounded-2xl p-5 mb-5 shadow-sm">
             <input

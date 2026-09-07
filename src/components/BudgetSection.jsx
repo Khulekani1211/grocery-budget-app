@@ -20,9 +20,15 @@ export default function BudgetSection({ budget, spent, remaining, onBudgetChange
     return (
         <div style={{ backgroundColor: COLORS.chalk }} className="rounded-2xl p-5 mb-5 shadow-sm">
             <div className="flex items-start justify-between">
-                <p style={{ color: overBudget ? COLORS.tomato : COLORS.ink }} className="font-semibold">
-                    {overBudget ? 'Over budget: ' : 'Left to spend: '}
-                    <Money value={Math.abs(remaining)} color={overBudget ? COLORS.tomato : COLORS.ink} />
+                <p style={{ color: overBudget ? COLORS.tomato : COLORS.ink }} className="flex flex-col gap-1 font-semibold">
+                    <span style={{ fontSize: '1.8rem' }}>
+                        <Money value={Math.abs(remaining)} color={overBudget ? COLORS.tomato : COLORS.ink} />
+                    </span>
+
+                    
+                    <span>
+                        {overBudget ? 'Over budget' : 'left to spend'}
+                    </span>
                 </p>
 
                 <button onClick={() => setShowBudgetForm(true)} aria-label="Edit budget" className="p-2 rounded-full" style={{ backgroundColor: COLORS.paper }}>
@@ -33,9 +39,16 @@ export default function BudgetSection({ budget, spent, remaining, onBudgetChange
                 </button>
             </div>
 
-            <p className="text-sm mt-1" style={{ color: COLORS.ink, opacity: 0.6 }}>
-                Spent R {spent.toFixed(2)} of R {budget?.toFixed(2)}
-            </p>
+            <div className="flex justify-between mt-1">
+                <p className="text-sm mt-1" style={{ color: COLORS.ink, opacity: 0.6 }}>
+                    Spent R {spent.toFixed(2)}
+                </p>
+
+                <p className="text-sm mt-1" style={{ color: COLORS.ink, opacity: 0.6 }}>
+                    Budget R {budget?.toFixed(2)}
+                </p>
+            </div>
+            
 
             {showBudgetForm && (
                 <div className="mt-3 flex gap-2">

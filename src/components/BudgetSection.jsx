@@ -27,22 +27,38 @@ export default function BudgetSection({ budget, spent, remaining, onBudgetChange
 
             {
                 showBudgetForm ? (
-                    <div className="mt-3 flex gap-2">
-                        <input
-                            type="number"
-                            value={budgetDraft}
-                            onChange={(e) => setBudgetDraft(e.target.value)}
-                            placeholder="Enter your budget"
-                            className="border rounded px-3 py-2"
-                        />
-                        <button 
-                            onClick={handleConfirm} 
-                            style={{ backgroundColor: COLORS.basil}}
-                            className="px-4 rounded-lg text-white font-semibold shrink-0"
+                    <div>
+                        <p 
+                            className="text-sm" style={{ color: COLORS.ink, opacity: 0.8 }}
+                            style={{ fontFamily: '"Space Grotesk", sans-serif' }}
                         >
-                            Set
+                            Update your budget
+                        </p>
+                        <div className="mt-3 flex gap-2">
+                            <input
+                                type="number"
+                                value={budgetDraft}
+                                onChange={(e) => setBudgetDraft(e.target.value)}
+                                placeholder="Enter your budget"
+                                className="border rounded px-3 py-2 flex-1"
+                            />
+                            <button 
+                                onClick={handleConfirm} 
+                                style={{ backgroundColor: COLORS.basil}}
+                                className="px-4 rounded-lg text-white font-semibold shrink-0"
+                            >
+                                Set
+                            </button>
+                        </div>
+                        <button 
+                            onClick={() => setShowBudgetForm(false)}
+                            className="text-sm mt-3"
+                            style={{ color: COLORS.ink, opacity: 0.6}}
+                        >
+                            Cancel
                         </button>
                     </div>
+                    
                 ) : (
                     <div>
                         <div  className="flex items-start justify-between">

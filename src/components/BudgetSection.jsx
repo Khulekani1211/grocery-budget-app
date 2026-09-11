@@ -35,7 +35,13 @@ export default function BudgetSection({ budget, spent, remaining, onBudgetChange
                             placeholder="Enter your budget"
                             className="border rounded px-3 py-2"
                         />
-                        <button onClick={handleConfirm}>Set</button>
+                        <button 
+                            onClick={handleConfirm} 
+                            style={{ backgroundColor: COLORS.basil}}
+                            className="px-4 rounded-lg text-white font-semibold shrink-0"
+                        >
+                            Set
+                        </button>
                     </div>
                 ) : (
                     <div>

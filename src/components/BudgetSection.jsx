@@ -22,6 +22,8 @@ export default function BudgetSection({ budget, spent, remaining, onBudgetChange
 
     const overBudget = remaining < 0;
 
+    const progressBarWidth = budget ? Math.min((spent / budget) * 100, 100) : 0;
+
     return (
        <div style={{ backgroundColor: COLORS.chalk }} className="rounded-2xl p-5 mb-5 shadow-sm">
 
@@ -80,6 +82,17 @@ export default function BudgetSection({ budget, spent, remaining, onBudgetChange
                                     <path d="m15 5 4 4"></path>
                                 </svg>
                             </button>
+                        </div>
+
+                        <div className="w-full rounded-full overflow-hidden mt-4" style={{ height: 10, backgroundColor: COLORS.grid }}>
+                            <div
+                                style={{
+                                width: `${progressBarWidth}%`,
+                                height: '100%',
+                                backgroundColor: overBudget ? COLORS.tomato : COLORS.basil,
+                                transition: 'width 0.3s ease',
+                                }}
+                            />
                         </div>
 
                         <div className="flex justify-between mt-1">

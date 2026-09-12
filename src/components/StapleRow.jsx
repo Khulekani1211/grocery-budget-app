@@ -8,13 +8,13 @@ export default function StapleRow({ item, isEditing, onRowClick, onConfirm, onCa
   if (isEditing) {
     return (
         <li className="flex items-center gap-2">
-            <span className="flex-1">{item.name}</span>
+            <span className="flex-1 min-w-0">{item.name}</span>
             <input
                 type="number"
                 autoFocus
                 value={priceDraft}
                 onChange={(e) => setPriceDraft(e.target.value)}
-                className="border rounded px-2 py-1 w-20"
+                className="border shrink-0 rounded px-2 py-1 w-20"
             />
             <button
                 onClick={() => onConfirm(parseFloat(priceDraft))}

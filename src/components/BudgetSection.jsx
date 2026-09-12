@@ -42,7 +42,7 @@ export default function BudgetSection({ budget, spent, remaining, onBudgetChange
                                 value={budgetDraft}
                                 onChange={(e) => setBudgetDraft(e.target.value)}
                                 placeholder="Enter your budget"
-                                className="border rounded px-3 py-2 flex-1"
+                                className="border rounded px-3 py-2 flex-1 min-w-0"
                                 style={{ backgroundColor: COLORS.paper, color: COLORS.ink, fontFamily: '"IBM Plex Mono", monospace' }}
                             />
                             <button 

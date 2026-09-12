@@ -29,7 +29,7 @@ export default function ExtrasSection({ extras, onAdd, onRemove }) {
                         onChange={(e) => setName(e.target.value)}
                         placeholder="What are you adding?"
                         style={{ backgroundColor: COLORS.paper, color: COLORS.ink }}
-                        className="flex-1 rounded-lg px-3 py-3 text-sm"
+                        className="flex-1 min-w-0 rounded-lg px-3 py-3 text-sm"
                     />
                     <input
                         type="number"
@@ -37,7 +37,7 @@ export default function ExtrasSection({ extras, onAdd, onRemove }) {
                         onChange={(e) => setPrice(e.target.value)}
                         placeholder="0"
                         style={{ backgroundColor: COLORS.paper, color: COLORS.ink, fontFamily: '"IBM Plex Mono", monospace' }}
-                        className="w-16 rounded-lg px-2 py-3 text-sm"
+                        className="w-16 shrink-0 rounded-lg px-2 py-3 text-sm"
                     />
                     <button
                         onClick={handleAdd}

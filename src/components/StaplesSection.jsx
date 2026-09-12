@@ -59,7 +59,7 @@ export default function StaplesSection({ staples, onToggle, onConfirmPrice, onAd
                   onChange={(e) => setNewStapleName(e.target.value)}
                   placeholder="Item name"
                   style={{ backgroundColor: COLORS.paper, color: COLORS.ink }}
-                  className="flex-1 rounded-lg px-3 py-2 text-sm"
+                  className="flex-1 min-w-0 rounded-lg px-3 py-2 text-sm"
                 />
                 <input
                   type="number"
@@ -67,7 +67,7 @@ export default function StaplesSection({ staples, onToggle, onConfirmPrice, onAd
                   onChange={(e) => setNewStaplePrice(e.target.value)}
                   placeholder="0.00"
                   style={{ backgroundColor: COLORS.paper, color: COLORS.ink, fontFamily: '"IBM Plex Mono", monospace' }}
-                  className="w-16 rounded-lg px-2 py-2 text-sm"
+                  className="w-16 shrink-0 rounded-lg px-2 py-2 text-sm"
                 />
                 <button
                   onClick={hadleStapleAdd}

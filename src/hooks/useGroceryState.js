@@ -4,7 +4,7 @@ import {DEFAULT_STAPLES} from '../data/defaultStaples.js';
 export default function useGroceryState() {
   const [budget, setBudget] = useState(() => {
     const savedBudget = localStorage.getItem('grocery-budget');
-    return savedBudget ? parseFloat(savedBudget) : '';
+    return savedBudget ? parseFloat(savedBudget) : null;
   });
 
   const [staples, setStaples] = useState(() => {

@@ -1,4 +1,4 @@
-export const DEFAULT_STAPLES = [
+const RAW_STAPLES = [
   { id: 1, name: 'Bread', defaultPrice: 18.99, price: null, checked: false },
   { id: 2, name: 'Milk', defaultPrice: 98.99, price: null, checked: false },
   { id: 3, name: 'Eggs', defaultPrice: 87.99, price: null, checked: false },
@@ -36,3 +36,12 @@ export const DEFAULT_STAPLES = [
   { id: 35, name: 'Pineapple', defaultPrice: 24.99, price: null, checked: false },
   { id: 36, name: 'Yoghurt', defaultPrice: 34.99, price: null, checked: false },
 ];
+
+export const DEFAULT_STAPLES = RAW_STAPLES.map((s, idx) => ({
+  id: idx + 1,
+  name: s.name,
+  defaultPrice: s.defaultPrice,
+  price: null,
+  quantity: 1,
+  checked: false,
+}))

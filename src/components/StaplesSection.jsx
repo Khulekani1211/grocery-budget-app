@@ -16,8 +16,8 @@ export default function StaplesSection({ staples, onToggle, onConfirmPrice, onAd
     }
   }
 
-  function handleConfirm(id, price){
-    onConfirmPrice(id, price);
+  function handleConfirm(id, price, quantity) {
+    onConfirmPrice(id, price, quantity);
     setEditingId(null);
   }
 
@@ -42,7 +42,7 @@ export default function StaplesSection({ staples, onToggle, onConfirmPrice, onAd
                 item={item} 
                 isEditing={editingId === item.id}
                 onRowClick={() => handleRowClick(item)}
-                onConfirm={(price) => handleConfirm(item.id, price)}
+                onConfirm={(price, quantity) => handleConfirm(item.id, price, quantity)}
                 onCancel={() => setEditingId(null)}
                 onRemove={() => onRemove(item.id)}
               />

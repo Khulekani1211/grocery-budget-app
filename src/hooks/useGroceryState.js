@@ -34,15 +34,15 @@ export default function useGroceryState() {
   function toggleStaple(id) {
     setStaples(
       staples.map((item) =>
-        item.id === id ? { ...item, price: null, checked: false, purchasedAt: null } : item
+        item.id === id ? { ...item, price: null, checked: false, quantity: 1, purchasedAt: null } : item
       )
     );
   }
 
-  function confirmStaplePrice(id, price) {
+  function confirmStaplePrice(id, price, quantity) {
     setStaples(
       staples.map((item) =>
-        item.id === id ? { ...item, price, checked: true, purchasedAt: Date.now() } : item
+        item.id === id ? { ...item, price, quantity: quantity || 1, checked: true, purchasedAt: Date.now() } : item
       )
     );
   }
@@ -80,7 +80,7 @@ export default function useGroceryState() {
 
   const spentOnStaples = staples
     .filter((item) => item.checked)
-    .reduce((sum, item) => sum + item.price, 0);
+    .reduce((sum, item) => sum + (item.price * item.quantity), 0);
 
   const spentOnExtras = extras.reduce((sum, item) => sum + item.price, 0);
   const spent = spentOnStaples + spentOnExtras;

@@ -4,11 +4,20 @@ import Money from './Money.jsx';
 
 export default function StapleRow({ item, isEditing, onRowClick, onConfirm, onCancel, onRemove }) {
   const [priceDraft, setPriceDraft] = useState(String(item.defaultPrice));
+  const [quantityDraft, setQuantityDraft] = useState("1");
 
   if (isEditing) {
     return (
         <li className="flex items-center gap-2">
             <span className="flex-1 min-w-0">{item.name}</span>
+
+            <input
+                type="number"
+                value={quantityDraft}
+                onChange={(e) => setQuantityDraft(e.target.value)}
+                className="w-12 shrink-0 border rounded px-2 py-1 text-sm text-center"
+                aria-label={`Quantity of ${item.name}`}
+            />
             <input
                 type="number"
                 autoFocus
@@ -17,7 +26,7 @@ export default function StapleRow({ item, isEditing, onRowClick, onConfirm, onCa
                 className="border shrink-0 rounded px-2 py-1 w-20"
             />
             <button
-                onClick={() => onConfirm(parseFloat(priceDraft))}
+                onClick={() => onConfirm(parseFloat(priceDraft), parseInt(quantityDraft, 10))}
                 className="text-green-700 font-medium"
                 style={{ backgroundColor: COLORS.basil, color: COLORS.chalk, padding: '0.5rem 0.5rem', borderRadius: '50%' }}
             >
@@ -66,7 +75,17 @@ export default function StapleRow({ item, isEditing, onRowClick, onConfirm, onCa
 
             {
                 item.checked ? (
-                    <Money value={item.price} />
+                    <span className="text-sm text-right" style={{ color: COLORS.ink }}>
+                        {
+                            item.quantity > 1 && (
+                                <span style={{ opacity: 0.5 }} className="mr-1">
+                                    {item.quantity}x
+                                </span>
+                            )
+                        }
+                        <Money value={item.price * item.quantity} />
+                    </span>
+                    
                 ) : (
                     <span style={{ color: COLORS.ink, opacity: 0.4, fontFamily: '"IBM Plex Mono", monospace' }} className="text-xs">
                         ¬R {item.defaultPrice.toFixed(2)}

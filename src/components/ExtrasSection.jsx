@@ -5,18 +5,22 @@ import { COLORS } from "../constants/colors.js";
 export default function ExtrasSection({ extras, onAdd, onRemove }) {
     const [name, setName] = useState('');
     const [price, setPrice] = useState('');
+    const [quantity, setQuantity] = useState('1');
 
     function handleAdd(){
         const parsePrice = parseFloat(price);
+        const parsedQuantity = parseInt(quantity, 10) || 1;
         if(!name.trim() || isNaN(parsePrice)) return;
 
         onAdd({
             id: Date.now(),
             name: name.trim(),
-            price: parsePrice
+            price: parsePrice,
+            quantity: parsedQuantity
         });
         setName('');
         setPrice('');
+        setQuantity('1');
     }
 
     return (
@@ -30,6 +34,14 @@ export default function ExtrasSection({ extras, onAdd, onRemove }) {
                         placeholder="What are you adding?"
                         style={{ backgroundColor: COLORS.paper, color: COLORS.ink }}
                         className="flex-1 min-w-0 rounded-lg px-3 py-3 text-sm"
+                    />
+                    <input
+                        type="number"
+                        value={quantity}
+                        onChange={(e) => setQuantity(e.target.value)}
+                        className="w-12 shrink-0 rounded-lg px-2 py-3 text-sm text-center"
+                        style={{ backgroundColor: COLORS.paper, color: COLORS.ink }}
+                        aria-label="Quantity"
                     />
                     <input
                         type="number"
@@ -51,9 +63,12 @@ export default function ExtrasSection({ extras, onAdd, onRemove }) {
                 <ul>
                     {extras.map((item,index) => (
                         <div key={item.id} style={{ borderTop: index > 0 ? `1px dashed ${COLORS.grid}` : 'none' }} className="flex items-center py-2 text-sm">
-                            <span style={{ color: COLORS.ink }}>{item.name}</span>
+                            <span style={{ color: COLORS.ink }}>
+                                {item.quantity > 1 && <span style={{ opacity: 0.5 }} className="mr-1">{item.quantity}×</span>}
+                                {item.name}
+                            </span>
                             <div className="justify-end flex-1 text-right" style={{ color: COLORS.ink }}>
-                                <Money value={item.price} />
+                                <Money value={item.price * item.quantity} />
                             </div>
                             
 

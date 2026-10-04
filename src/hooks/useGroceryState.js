@@ -82,7 +82,7 @@ export default function useGroceryState() {
     .filter((item) => item.checked)
     .reduce((sum, item) => sum + (item.price * item.quantity), 0);
 
-  const spentOnExtras = extras.reduce((sum, item) => sum + item.price, 0);
+  const spentOnExtras = extras.reduce((sum, item) => sum + (item.price * item.quantity), 0);
   const spent = spentOnStaples + spentOnExtras;
   const remainingBudget = (parseFloat(budget) || 0) - spent;
 

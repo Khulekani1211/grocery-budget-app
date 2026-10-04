@@ -5,12 +5,17 @@ export default function Receipt({ staples, extras, spent}) {
 
     const purchasedStaples = staples
         .filter(item => item.checked)
-        .map((item) => ({ id: item.id, name: item.name, price: item.price, purchasedAt: item.purchasedAt }));
+        .map((item) => ({ 
+            id: item.id, 
+            name: item.quantity > 1 ? `${item.name} (×${item.quantity})` : item.name, 
+            price: item.price * item.quantity, 
+            purchasedAt: item.purchasedAt 
+        }));
 
     const purchasedExtras = extras.map((item) => ({ 
         id: item.id, 
-        name: item.name, 
-        price: item.price, 
+        name: item.quantity > 1 ? `${item.name} (×${item.quantity})` : item.name, 
+        price: item.price * item.quantity, 
         purchasedAt: item.purchasedAt 
     }));
 
